@@ -91,9 +91,14 @@ export default function AdminDashboard() {
 
   function handleLogout() { clearSessionUser(); navigate('/login') }
 
-  function handleDeleteUser(email) {
-    if (window.confirm(`Delete user ${email}?`))
+  async function handleDeleteUser(email) {
+    if (!window.confirm(`Delete user ${email}?`)) return
+    try {
+      await axios.delete(`${API_BASE_URL}/api/user/${email}`)
       setUsers(prev => prev.filter(u => u.email !== email))
+    } catch (err) {
+      alert(err.response?.data?.message || 'Failed to delete user')
+    }
   }
 
   function handleScoreChange(subject, value) {
