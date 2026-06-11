@@ -60,8 +60,8 @@ export default function SignIn() {
         <p className="auth-subtitle">Register for the student portal</p>
 
         <form className="auth-form" onSubmit={handleSubmit}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-            <div className="auth-field">
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, overflow: 'hidden' }}>
+            <div className="auth-field" style={{ minWidth: 0 }}>
               <label htmlFor="si-first">First Name</label>
               <input
                 id="si-first"
@@ -71,7 +71,7 @@ export default function SignIn() {
                 disabled={loading}
               />
             </div>
-            <div className="auth-field">
+            <div className="auth-field" style={{ minWidth: 0 }}>
               <label htmlFor="si-last">Last Name</label>
               <input
                 id="si-last"
